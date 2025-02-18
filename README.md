@@ -99,21 +99,47 @@ Configure UEBA Settings by clicking on Entity Behavior Settings - Note: Only use
   <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/f259ca95018567a788c4795d513fd0a7e92084c4/Images/Input%20parameters%20for%20our%20audit.PNG" width="700" />
 </p>
 
+- To set up eDiscovery and Content Searches in Microsoft Purview, the account you are using must have the eDiscovery Manager role. To assign the eDiscovery Manager Role, in the Microsoft 365 compliance center, go to Permissions under the Compliance section, look for the eDiscovery Manager role group, add the users or accounts who need to perform searches and manage eDiscovery cases as eDiscovery Managers.
 
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/b34f782875db22aaea2e7baf46832b58fe505b04/Images/E-discovery%20manager%20role.PNG" width="700" />
+</p>
 
+- Assign eDiscovery Managers and Administrators in the Role Settings through the Compliance center, navigate to Permissions. Under the eDiscovery Manager role group, click Edit, add the necessary users to the eDiscovery Manager group. (eDiscovery Manager Role allows users to create and manage eDiscovery cases, run searches, and export search results while eDiscovery Administrator Role has more comprehensive permissions, such as configuring eDiscovery settings, managing hold policies, and setting up content searches).
 
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/cddac95784aec633875fe2863d53fa8e07856c44/Images/e-discovery%20manager%20and%20administrator.PNG" width="700" />
+</p>
 
+- To access Content Search, in the Microsoft Purview Compliance portal, navigate to Solutions, under Solutions, select eDiscovery. Click on Content Search, it allows you to search across various workloads (e.g., Exchange, SharePoint, OneDrive) to locate specific data across your organization's environment. Create a Search, specify the search criteria, run the search - Purview will scan the specified locations for the content that matches your conditions, review the results such as number of items found and metadata like the date, sender, or author. You have an option to export the results for offline analysis or legal purposes.
 
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/ebe9a1aa861418d26838e01aa3eaa945112da11d/Images/eDiscovery%20content%20search.PNG" width="700" />
+</p>
 
+- Next we integrate Graph Activity Logs into our Azure environment using Log Analytics. We first create an Azure Log Analytics Workspace by accessing Azure Portal, search for Log Analytics in the search bar, click on Log Analytics workspaces and create a new Workspace.
 
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/9043980ad2ff45d84292733986f69425c366f082/Images/Creating%20a%20log%20analytics%20workspace.PNG" width="700" />
+</p>
 
+- We then go to Microsoft Entra ID from Azure portal, in the Microsoft Entra ID pane, find and select Diagnostic Settings under Monitoring in the left-hand menu. Add diagnostic setting, this will allow us to configure the logs that will be sent to our Log Analytics workspace.
 
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/f20cbff7b36b3058dfdbb8814a558ef010e7a79d/Images/Diagnostic%20settings%20in%20Entra%20ID.PNG" width="700" />
+</p>
 
+- Enable “MicrosoftGraphActivityLogs” and send to Log Analytics Workspace. After clicking on Add diagnostic setting, name the diagnostic setting, enable MicrosoftGraphActivityLogs - it's selected to capture logs related to Graph API activity, send logs to Log Analytics Workspace that we created earlier from the drop-down list, and click Save to apply the diagnostic settings.
 
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/eb4955705d031d1b9e7699f6834d3049335bd01f/Images/Sending%20to%20our%20log%20analytics%20workspace%20that%20we%20created.PNG" width="700" />
+</p>
 
+- After configuring diagnostic settings, logs will start flowing into your workspace, go to the Log Analytics Workspace that we created, for our case it is `GraphLogWorkspace`, click on Logs under the General section in the workspace menu, use Kusto Query Language (KQL) to query and analyze the Graph Activity logs. You can modify the query to filter by specific activities, users, or time periods as needed. If no longer needed, delete the workspace by removing the associated resource group.
 
-
-
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/03faa0d57bf3cabb4ce06a2acddab2020d3ba119/Images/Where%20we%20perform%20log%20queries.PNG" width="700" />
+</p>
 
 
 
