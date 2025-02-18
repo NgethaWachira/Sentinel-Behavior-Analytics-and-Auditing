@@ -55,6 +55,63 @@ Configure UEBA Settings by clicking on Entity Behavior Settings - Note: Only use
   <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/093aef5055729e355ee945db694895340579b9ad/Images/Searching%20using%20entity%20pages%202.PNG" width="300" />
 </p>
 
+- Next we conduct Anomaly Monitoring and Analysis in Microsoft Sentinel. Open the Microsoft Sentinel portal, In the left-hand menu, under Configuration, select Analytics, find and click on Anomalies. This section provides a detailed view of all the anomaly-based alerts and entries that Sentinel has detected, which could indicate unusual or suspicious activity.
+
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/dfef391db334742fa44f521ecc8b5c0d512d4a7e/Images/Configuring%20anomaly%20detection%20rules.PNG" width="700" />
+</p>
+
+- Edit any anomaly entry using the ellipsis at the end of the log. Click on the ellipsis and it will open a menu with options such as edit, investigate, view details, or assign. Select edit to modify the anomaly's details such as changing its severity, marking it as resolved, or providing additional context or notes. These anomalies are monitored in real-time or near-real-time, ensuring that any new developments or behaviors are flagged promptly.
+
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/dfef391db334742fa44f521ecc8b5c0d512d4a7e/Images/Editing%20an%20anomaly.PNG" width="700" />
+</p>
+
+- We will also create a Near Real-Time (NRT) Rule in Microsoft Sentinel for anomaly detection as well. From the microsoft Sentinel navigation pane, select Configuration, then click on Analytics. Click on Create to create a new rule, choose scheduled query rule for the type of rule, set query frequency to a near-real-time frequency, and proceed to the rule logic configuration.
+
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/d26b70b764330b3ccce0e2d02820a5df9d48154a/Images/Creating%20NRT%20rule%20anomaly.PNG" width="700" />
+</p>
+
+- Next we define the rule’s parameters using KQL. In the rule logic section, we wrote a Kusto Query Language (KQL) query that will detect anomalies based on our data. Example KQL query for anomaly detection on `SecurityEvent` table. Configure the logic to trigger on any anomalies detected, review the details and click Create to save the rule. It will now run continuously based on the defined schedule, monitoring for anomalies.
+
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/4a32200e780d4969d642dbd092f3e37f38db487e/Images/KQL%20Editing.PNG" width="700" />
+</p>
+
+- Setting up auditing in Microsoft Purview from the Microsoft 365 admin center, in the left-hand navigation menu, go to Environment, under Environment, select Solutions, then click on Audit. This is where you'll configure and manage auditing settings. (Understand the Licensing differences, Standard (E3 Office) License provides basic auditing features while Premium (E5 Office) License offers advanced auditing capabilities).
+- In the Audit section, navigate to Settings, click on Role and Scopes, go to Role Groups and look for the Audit Manager role group, ensure the necessary individuals or groups are added to the Audit Manager role to give them permission to manage and configure auditing. Here we are giving ourselves permission to audit.
+
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/5d20ddf98baf7868a0c52784ed10d78910ec2e45/Images/Authority%20to%20audit.PNG" width="300" />
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/04302d6e53a68469334119502a9f743f9eac9313/Images/Assigning%20user%20to%20audit.PNG" width="300" />
+</p>
+
+- Next we activate auditing by `Start Recording User and Admin Activity` as seen in the image. Go to the Audit tab within the Audit section, click on `Start recording user and admin activity`, this action will activate auditing, allowing Purview to start logging user and admin activity within your environment, all menu items will now be fully accessible and no longer grayed out.
+
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/73d27a59ea2f901ca2988ce4d139857ee3b69ec7/Images/Turning%20on%20auditing.PNG" width="700" />
+</p>
+
+- We then configure the scope of the audit, select the time range, choose the activities, specify which users, and workloads to audit. After the audit search completes, you will see the results displayed on the screen. To analyze the data offline or share it with others, click on the Export option and select Export as CSV, this will download the audit data as a CSV file, which you can open and analyze using Excel or other tools.
+
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/f259ca95018567a788c4795d513fd0a7e92084c4/Images/Input%20parameters%20for%20our%20audit.PNG" width="700" />
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
