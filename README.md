@@ -135,7 +135,7 @@ Configure UEBA Settings by clicking on Entity Behavior Settings - Note: Only use
   <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/eb4955705d031d1b9e7699f6834d3049335bd01f/Images/Sending%20to%20our%20log%20analytics%20workspace%20that%20we%20created.PNG" width="700" />
 </p>
 
-- After configuring diagnostic settings, logs will start flowing into your workspace, go to the Log Analytics Workspace that we created, for our case it is `GraphLogWorkspace`, click on Logs under the General section in the workspace menu, use Kusto Query Language (KQL) to query and analyze the Graph Activity logs. You can modify the query to filter by specific activities, users, or time periods as needed. If no longer needed, delete the workspace by removing the associated resource group.
+- After configuring diagnostic settings, logs will start flowing into your workspace, go to the Log Analytics Workspace that we created, for our case it is `graphlogworkspace`, click on Logs under the General section in the workspace menu, use Kusto Query Language (KQL) to query and analyze the Graph Activity logs. You can modify the query to filter by specific activities, users, or time periods as needed. If no longer needed, delete the workspace by removing the associated resource group.
 
 <p align="center">
   <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/03faa0d57bf3cabb4ce06a2acddab2020d3ba119/Images/Where%20we%20perform%20log%20queries.PNG" width="700" />
