@@ -33,6 +33,32 @@ The objective is to guide users in setting up and using Microsoft Sentinel for s
 </div>
 
 ## Steps
+- First, we set up User Entity Behavior Analytics (UEBA) in Microsoft Sentinel by going to Microsoft Sentinel service in the Azure portal, choose the Sentinel Workspace that you want to configure UEBA for, for our case it's SentinelLogWorkspace. Go to Threat Management, and under it select Entity Behavior, this is where you manage UEBA settings, 
+Configure UEBA Settings by clicking on Entity Behavior Settings - Note: Only users with Global Admin or Security Admin roles can configure UEBA settings, so ensure you have the appropriate permissions.
+
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/aac44ff355ba1466fdb03754aca001d6f3177811/Images/Entity%20behavior%20settings.png" width="700" />
+</p>
+
+- Sync Sentinel with Entra ID (formerly Azure AD) - If your organization is not using an on-premise Active Directory (AD), ensure that Microsoft Sentinel is connected to Entra ID (formerly Azure AD). This is necessary because UEBA relies on Azure AD identities to analyze user and entity behaviors. After setting up Entra ID, make sure to apply the changes so that the sync is complete. 
+
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/b6b64a6c83ba6c6847aa09cc0aef41d0331a5cb3/Images/Setting%20UEBA.PNG" width="700" />
+</p>
+
+- Select data sources from the Entity Behavior Settings, you’ll find an option to select which data sources you want to enable for UEBA, common data sources include Azure AD logs, Defender for Identity, and Microsoft Defender for Office 365. Once you've selected the appropriate data sources, ensure you enable UEBA for those sources. After enabling, Sentinel will start collecting and analyzing user and entity behavior patterns from the selected data sources and generating insights about potential risks and anomalies. We can set up alert rules based on suspicious behavior detected by UEBA, allowing us to take timely action.
+
+- Once UEBA is set up, go to the Entity Search Area - this area allows you to search for entities such as accounts, devices, host IPs, and other objects of interest. Enter the entity e.g., an account name like “James Rain” for our case or an IP address you wish to search for, specify the type of object you’re investigating (accounts, devices, IPs, etc.) to refine your search. After searching, the system will show any anomalies linked to that entity, these anomalies could include unusual logins, failed access attempts, or other suspicious activity that Sentinel has flagged based on UEBA analysis. Adjust the timeline filter to help you narrow down and investigate activity over a specific timeframe.
+
+<p align="center">
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/093aef5055729e355ee945db694895340579b9ad/Images/Searching%20using%20entity%20pages%201.PNG" width="300" />
+  <img src="https://github.com/NgethaWachira/Sentinel-Behavior-Analytics-and-Auditing/blob/093aef5055729e355ee945db694895340579b9ad/Images/Searching%20using%20entity%20pages%202.PNG" width="300" />
+</p>
+
+
+
+
+
 
 
 
